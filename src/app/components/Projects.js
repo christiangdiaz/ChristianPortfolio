@@ -39,9 +39,10 @@ export default function Projects() {
               <a href="https://github.com/christiangdiaz/ppe-frontend" className="text-cyan-400 hover:underline" target="_blank" rel="noopener noreferrer">
                 GitHub Repo
               </a>
-              <p> | </p>
+              <p className='m-2'> | </p>
+
               <a href="https://www.ppecondo.com/" className="text-cyan-400 hover:underline" target="_blank" rel="noopener noreferrer">
-                View Project
+              View Project
               </a>
             </div>
           </div>
@@ -93,7 +94,7 @@ export default function Projects() {
               <a href="https://github.com/christiangdiaz/translations" className="text-cyan-400 hover:underline" target="_blank" rel="noopener noreferrer">
                 GitHub Repo
               </a>
-              <p> | </p>
+              <p className='m-2'> | </p>
               <a href="https://www.perfect-accent.com/" className="text-cyan-400 hover:underline" target="_blank" rel="noopener noreferrer">
                 View Project
               </a>
