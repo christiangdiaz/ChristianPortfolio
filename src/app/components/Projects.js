@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +7,8 @@ export default function Projects() {
   const [showPopUp, setShowPopUp] = useState(false);
   const [project, setProject] = useState('');
   const [x, setX] = useState(1);
+  const popUpRef = useRef(null);
+
 
   const openPopUp = (project) => {
     setShowPopUp(true);
@@ -20,6 +22,21 @@ export default function Projects() {
     setX(1); 
   };
 
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (popUpRef.current && !popUpRef.current.contains(event.target)) {
+        closePopUp();
+      }
+    }
+
+    if(showPopUp) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [showPopUp]);
   const maxImages = project === 'Condo' ? 3 : 4; 
 
   return (
@@ -29,12 +46,11 @@ export default function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {/* Project 1 */}
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
-            <button className="text-2xl font-bold text-cyan-400" onClick={() => openPopUp('Condo')}>
+            <button className="text-2xl font-bold text-cyan-400 hover:text-cyan-600" onClick={() => openPopUp('Condo')}>
               Pelican Point
             </button>
             <p className="text-gray-300 mt-2">
-              Built a secure condo website for document access and resident resources using Node.js, Firebase, React, and Tailwind CSS, hosted on Heroku.
-            </p>
+            A secure website providing document access and resources for condo residents. Built with Node.js, Firebase, React, and Tailwind CSS. Backend hosted on Heroku; frontend on AWS Amplify.            </p>
             <div className="flex items-center mt-4">
               <a href="https://github.com/christiangdiaz/ppe-frontend" className="text-cyan-400 hover:underline" target="_blank" rel="noopener noreferrer">
                 GitHub Repo
@@ -47,10 +63,31 @@ export default function Projects() {
             </div>
           </div>
 
-          {/* Pop-Up */}
-          {showPopUp && (
+    
+
+          {/* Project 2 */}
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
+            <button className="text-2xl font-bold text-cyan-400 hover:text-cyan-600" onClick={() => openPopUp('translation')}>
+              Perfect Accent
+            </button>
+            <p className="text-gray-300 mt-2">
+            An e-commerce platform allowing customers to submit files for quotes, managed by Firebase and designed for a small business. Developed with JavaScript, using React, hosted on AWS Amplify.
+            </p>
+              <div className="flex items-center mt-4">
+              <a href="https://github.com/christiangdiaz/translations" className="text-cyan-400 hover:underline" target="_blank" rel="noopener noreferrer">
+                GitHub Repo
+              </a>
+              <p className='m-2'> | </p>
+              <a href="https://www.perfect-accent.com/" className="text-cyan-400 hover:underline" target="_blank" rel="noopener noreferrer">
+                View Project
+              </a>
+            </div>
+          </div>
+
+           {/* Pop-Up */}
+           {showPopUp && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-              <div className="bg-gray-800 p-6 rounded-lg shadow-xl max-w-md w-full text-center border border-cyan-400">
+              <div ref={popUpRef} className="bg-gray-800 p-6 rounded-lg shadow-xl max-w-md w-full text-center border border-cyan-400 ">
                 <p className="text-2xl font-bold text-cyan-400 mb-3">
                   {project === 'Condo' ? 'Pelican Point' : project === 'translation' ? 'Perfect Accent' : ''}
                 </p>
@@ -82,24 +119,6 @@ export default function Projects() {
             </div>
           )}
 
-          {/* Project 2 */}
-          <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
-            <button className="text-2xl font-bold text-cyan-400" onClick={() => openPopUp('translation')}>
-              Perfect Accent
-            </button>
-            <p className="text-gray-300 mt-2">
-              Direct-to-consumer e-commerce website for a small business. Customers can submit a file to receive a quote.
-            </p>
-            <div className="flex items-center mt-4">
-              <a href="https://github.com/christiangdiaz/translations" className="text-cyan-400 hover:underline" target="_blank" rel="noopener noreferrer">
-                GitHub Repo
-              </a>
-              <p className='m-2'> | </p>
-              <a href="https://www.perfect-accent.com/" className="text-cyan-400 hover:underline" target="_blank" rel="noopener noreferrer">
-                View Project
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>

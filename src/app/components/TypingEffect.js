@@ -28,7 +28,7 @@ export default function TypingEffect({ phrases }) {
       }
     };
 
-    const typingSpeed = isDeleting ? 50 : 100;
+    const typingSpeed = isDeleting ? 80 : 125;
     const typingInterval = setInterval(handleTyping, typingSpeed);
 
     return () => clearInterval(typingInterval);

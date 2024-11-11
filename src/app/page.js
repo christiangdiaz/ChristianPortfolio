@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import TypingEffect from './components/TypingEffect';
 import About from './components/About';
@@ -9,6 +9,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 
 export default function Home() {
+  const heroRef = useRef(null);
   const handleMouseMove = useCallback((event) => {
     if (typeof window !== 'undefined') {
       const x = event.clientX / window.innerWidth / 2 + 0.25;
