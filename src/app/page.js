@@ -50,7 +50,7 @@ export default function Home() {
             href="https://github.com/christiangdiaz"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white text-2xl md:text-3xl hover:text-gray-300 transition duration-200 transform hover:scale-110"
+            className="text-white text-2xl md:text-3xl hover:text-cyan-400 transition duration-200 transform hover:scale-110"
             aria-label="GitHub Profile"
           >
             <FaGithub />
