@@ -1,7 +1,6 @@
-// Home.js
 "use client";
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import TypingEffect from './components/TypingEffect';
 import About from './components/About';
@@ -10,21 +9,25 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 
 export default function Home() {
-  const [background, setBackground] = useState(`radial-gradient(circle at 50% 50%, #1f1c2c, #454a59)`);
-
   const handleMouseMove = useCallback((event) => {
-    const x = event.clientX / window.innerWidth / 2 + 0.25;
-    const y = event.clientY / window.innerHeight / 2 + 0.25;
-    setBackground(`radial-gradient(circle at ${x * 100}% ${y * 100}%, #1f1c2c, #454a59)`);
+    if (typeof window !== 'undefined') {
+      const x = event.clientX / window.innerWidth / 2 + 0.25;
+      const y = event.clientY / window.innerHeight / 2 + 0.25;
+      document.body.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, #1f1c2c, #454a59)`;
+    }
   }, []);
 
   useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    if (typeof window !== 'undefined') {
+      document.body.style.background = 'radial-gradient(circle at 50% 50%, #1f1c2c, #454a59)';
+
+      window.addEventListener("mousemove", handleMouseMove);
+      return () => window.removeEventListener("mousemove", handleMouseMove);
+    }
   }, [handleMouseMove]);
 
   return (
-    <div className="flex flex-col items-center min-h-screen" style={{ background }}>
+    <div className="flex flex-col items-center min-h-screen">
       <section className="flex flex-col items-center justify-center min-h-screen py-8 px-4 md:px-8" id="hero">
         <h1 className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg backdrop-blur-md mb-4 text-center" style={{ userSelect: 'none' }}>
           Hey, I'm Christian
