@@ -84,22 +84,29 @@ export default function Projects() {
             </div>
           </div>
 
+          {/* Project 3 */}
+          <div className='bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300'>
+            <button className='text-2xl font-bold text-cyan-400 hover:text-cyan-600' onClick={() => openPopUp('.png')}>
+              New England First Amendment Coalition
+            </button>
+          </div>
+
            {/* Pop-Up */}
            {showPopUp && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
               <div ref={popUpRef} className="bg-gray-800 p-6 rounded-lg shadow-xl max-w-md w-full text-center border border-cyan-400 ">
                 <p className="text-2xl font-bold text-cyan-400 mb-3">
-                  {project === 'Condo' ? 'Pelican Point' : project === 'translation' ? 'Perfect Accent' : ''}
+                  {project === 'Condo' ? 'Pelican Point' : project === 'translation' ? 'Perfect Accent' : project==='nefac' ? 'New England First Amendment Coalition' : ''}
                 </p>
 
+                {project==='Condo' ? 
+                <div>
                 <img src={`/${project}${x}.png`} 
-                alt={project} 
                 className="w-full h-72 object-cover rounded mb-4" 
                 style={{userSelect: 'none'}}
                 draggable={false}
-                />
-
-                <div className="flex justify-between items-center mb-4">
+                /> 
+                  <div className="flex justify-between items-center mb-4">
                   <FontAwesomeIcon
                     icon={faArrowLeft}
                     className="text-white text-3xl cursor-pointer hover:text-cyan-400 transition"
@@ -111,6 +118,32 @@ export default function Projects() {
                     onClick={() => setX(x === maxImages ? 1 : x + 1)}
                   />
                 </div>
+                </div>
+                : project==='translation' ? 
+                <div>
+                <img src={`/${project}${x}.png`} 
+                className="w-full h-72 object-cover rounded mb-4" 
+                style={{userSelect: 'none'}}
+                draggable={false}
+                /> 
+                  <div className="flex justify-between items-center mb-4">
+                    <FontAwesomeIcon
+                      icon={faArrowLeft}
+                      className="text-white text-3xl cursor-pointer hover:text-cyan-400 transition"
+                      onClick={() => setX(x === 1 ? maxImages : x - 1)}
+                    />
+                    <FontAwesomeIcon
+                      icon={faArrowRight}
+                      className="text-white text-3xl cursor-pointer hover:text-cyan-400 transition"
+                      onClick={() => setX(x === maxImages ? 1 : x + 1)}
+                    />
+                </div>
+                </div>
+                : project==='nefac' ? <p></p> : 
+                <div>
+                  <p className='text-2xl font-bold text-cyan-400 mb-3'>NEFAC</p> 
+                  <p className='pb-2 mb-4'>Created in collaboration with Build UMass. Part of a team that was tasked with creating and implementing an AI-powered search engine into their existing website.</p>
+                </div>}
 
                 <button onClick={closePopUp} className="px-6 py-2 bg-cyan-400 text-white rounded-lg hover:bg-cyan-500 transition">
                   Close

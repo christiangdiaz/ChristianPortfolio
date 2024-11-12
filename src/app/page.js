@@ -29,6 +29,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center min-h-screen">
+      <p className='bottom-0'>hi</p>
       <section className="flex flex-col items-center justify-center min-h-screen py-8 px-4 md:px-8" id="hero">
         <h1 className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg backdrop-blur-md mb-4 text-center" style={{ userSelect: 'none' }}>
           Hey, I'm Christian
