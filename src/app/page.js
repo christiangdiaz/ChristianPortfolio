@@ -107,7 +107,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
               <div className="flex space-x-6">
                 <a
-                  href="https://www.linkedin.com/in/christian-diaz-276246327"
+                  href="https://www.linkedin.com/in/christiangdiaz1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white text-3xl hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 hover:rotate-3"
