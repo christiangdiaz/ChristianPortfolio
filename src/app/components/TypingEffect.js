@@ -1,4 +1,3 @@
-// components/TypingEffect.js
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -35,9 +34,9 @@ export default function TypingEffect({ phrases }) {
   }, [isDeleting, phrases]);
 
   return (
-    <span>
-      <span className="text-cyan-400" style={{userSelect: 'none'}}>{displayedText}</span>
-      <span className="blinking-cursor" style={{userSelect: 'none'}}>‎</span>
+    <span className="text-2xl md:text-4xl text-cyan-400 font-semibold" style={{ userSelect: 'none' }}>
+      {displayedText}
+      <span className="blinking-cursor" style={{ userSelect: 'none' }}>‎</span>
       <style jsx>{`
         .blinking-cursor {
           display: inline-block; 
