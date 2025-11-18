@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -27,7 +28,19 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
-</head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-LNF4L2LCWV"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-script" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-LNF4L2LCWV');
+          `}
+        </Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
