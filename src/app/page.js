@@ -69,10 +69,10 @@ export default function Home() {
           }
         };
 
-        window.addEventListener("mousemove", throttledMouseMove);
+        window.addEventListener("mousemove", throttledMouseMove, { passive: true });
 
         return () => {
-          window.removeEventListener("mousemove", throttledMouseMove);
+          window.removeEventListener("mousemove", throttledMouseMove, { passive: true });
         };
       }
     }

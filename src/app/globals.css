@@ -19,9 +19,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 80px;
-  overflow-x: hidden;
+  overscroll-behavior: none;
 }
 
 body {
@@ -29,15 +28,7 @@ body {
   background: #1f2937;
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   line-height: 1.6;
-  overflow-x: hidden;
   min-height: 100vh;
-  position: relative;
-}
-
-html,
-body {
-  overscroll-behavior: none;
-  -webkit-overflow-scrolling: touch;
 }
 
 ::-webkit-scrollbar {
@@ -62,20 +53,14 @@ body {
 }
 
 @keyframes blink {
-
-  0%,
-  50% {
-    opacity: 1;
-  }
-
-  51%,
-  100% {
-    opacity: 0;
-  }
+  50% { opacity: 0; }
 }
 
 .blinking-cursor {
-  animation: blink 1s infinite;
+  display: inline-block;
+  width: 1px;
+  background-color: cyan;
+  animation: blink 0.7s steps(1) infinite;
 }
 
 .gradient-text {

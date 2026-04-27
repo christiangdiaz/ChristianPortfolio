@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-export default function TypingEffect({ phrases }) {
+export default function TypingEffect({ phrases }: { phrases: string[] }) {
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const phraseIndex = useRef(0);
@@ -37,18 +37,6 @@ export default function TypingEffect({ phrases }) {
     <span className="text-2xl md:text-4xl text-cyan-400 font-semibold" style={{ userSelect: 'none' }}>
       {displayedText}
       <span className="blinking-cursor" style={{ userSelect: 'none' }}>‎</span>
-      <style jsx>{`
-        .blinking-cursor {
-          display: inline-block; 
-          width: 1px;
-          background-color: cyan;
-          animation: blink 0.7s steps(1) infinite;
-        }
-
-        @keyframes blink {
-          50% { opacity: 0; }
-        }
-      `}</style>
     </span>
   );
 }
