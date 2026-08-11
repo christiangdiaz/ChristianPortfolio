@@ -1,50 +1,17 @@
-import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
 export const metadata = {
-  title: "Christian Diaz - Software Engineer",
+  title: "Christian Diaz — Software Engineer",
   description:
-    "Portfolio website for Christian Diaz, a software engineer based in Massachusetts.",
+    "Christian Diaz is a UMass Amherst computer science student working across embedded systems, automation, computer vision, and full-stack development.",
 };
 
-export default function RootLayout({
-  children,
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/site.webmanifest" />
+      <body>
+        {children}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-LNF4L2LCWV"
           strategy="afterInteractive"
@@ -57,11 +24,6 @@ export default function RootLayout({
             gtag('config', 'G-LNF4L2LCWV');
           `}
         </Script>
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
       </body>
     </html>
   );
