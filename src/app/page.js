@@ -37,7 +37,7 @@ export default function Home() {
                 <a className="text-link" href="mailto:christiangdiaz2@gmail.com">Email</a>
                 <a className="text-link" href="https://github.com/christiangdiaz" target="_blank" rel="noreferrer">GitHub ↗</a>
                 <a className="text-link" href="https://www.linkedin.com/in/christiangdiaz1" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-                <a className="text-link" href="/Christian-Diaz-Resume.pdf" download>Résumé ↓</a>
+                <a className="text-link" href="/Diaz, Christian.pdf" download>Résumé ↓</a>
               </div>
             </div>
           </div>
